@@ -43,7 +43,7 @@ nginx_http_params: "{{ nginx_http_default_params }}"
 
 nginx_stream_params: []
 
-nginx_sites_default_root: /usr/share/nginx/html # For this variable, a specific value for the OS can be apply in vars/{{ ansible_os_family }}.
+nginx_sites_default_root: /usr/share/nginx/html  # For this variable, a specific value for the OS can be apply in vars/{{ ansible_os_family }}.
 
 nginx_sites:
   default:
@@ -53,6 +53,11 @@ nginx_sites:
     - index index.html
 nginx_remove_sites: []
 nginx_disabled_sites: []
+
+nginx_module_configs: []
+nginx_remove_modules: []
+nginx_disabled_modules: []
+nginx_modules_location: /usr/lib64/nginx/modules # For this variable, a specific value for the OS can be applied in vars/{{ ansible_os_family }}.
 
 nginx_configs: {}
 nginx_snippets: {}
@@ -72,3 +77,9 @@ nginx_start_at_boot: true
 nginx_set_real_ip_from_cloudflare: False
 nginx_cloudflare_real_ip_header: "CF-Connecting-IP" # See: https://support.cloudflare.com/hc/en-us/articles/200170706-How-do-I-restore-original-visitor-IP-with-Nginx-
 nginx_cloudflare_configuration_name: "cloudflare" # Name for the conf file in the conf.d directory
+
+nginx_amplify: false
+nginx_amplify_api_key: ""
+nginx_amplify_update_agent: false
+nginx_amplify_script_url: "https://github.com/nginxinc/nginx-amplify-agent/raw/master/packages/install.sh"
+nginx_amplify_script_path: "/tmp/install-amplify-agent.sh"
